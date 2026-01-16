@@ -3,6 +3,8 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import healthRoutes from "./routes/health.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import videoRoutes from "./routes/video.routes.js";
+
 
 
 dotenv.config();
@@ -14,6 +16,8 @@ app.use(cookieParser());
 
 app.use("/health", healthRoutes);
 app.use("/auth", authRoutes);
+app.use("/api", videoRoutes);
+
 
 
 app.use((req, res) => {
