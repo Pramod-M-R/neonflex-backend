@@ -19,14 +19,17 @@ export async function initDatabase() {
       );
 
       CREATE TABLE IF NOT EXISTS videos (
-        id UUID PRIMARY KEY,
-        title TEXT NOT NULL,
-        description TEXT,
-        thumbnail_url TEXT,
-        stream_asset_id TEXT NOT NULL,
-        duration INTEGER,
-        created_at TIMESTAMP DEFAULT NOW()
-      );
+  id UUID PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT,
+  thumbnail_url TEXT,
+  stream_asset_id TEXT NOT NULL,
+  stream_type TEXT NOT NULL CHECK (stream_type IN ('youtube')),
+  duration INTEGER,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 
       CREATE TABLE IF NOT EXISTS watch_progress (
         user_id UUID REFERENCES users(id),
